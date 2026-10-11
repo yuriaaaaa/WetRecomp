@@ -16,9 +16,13 @@ An Android (arm64-v8a) port of [WetRecomp](https://github.com/nikolaygorb/WetRec
 
 ## Status of the source code
 
-The Android port was developed and built on a temporary Linux build machine. The source changes themselves (the Android launcher app, the native overlays on the SDK, and the build scripts) were not committed anywhere before that machine was recycled, so **they are not in this repository yet**. This document records what was implemented and what was reverse-engineered, in enough detail to rebuild it. Code will be added here if the sources are recovered or rewritten.
+The port's source is in this repository. It was recovered from the build session that produced the 1.0.16 APK and checked against that APK (the launcher's strings, the port's native log strings, and the SDK tree the overlays produce).
 
-No game files and no code recompiled from the game are included in this repository. Builds must be made from your own legally obtained copy of the game.
+- **Launcher and native build:** `android/` (Kotlin launcher, Android CMake project and JNI glue, Vortek, build scripts). [android/README.md](../android/README.md) explains how to build.
+- **SDK changes:** `android/native/overlay/rexglue-sdk/`, applied by `android/scripts/apply_overlays.sh` to the `android/rexglue-sdk` submodule (WetRecomp's pin `bd833a2`).
+- **WetRecomp changes:** the `__ANDROID__` branches in `src/utils.h` and `src/wetrecomp_app.h`.
+
+No game files, no code recompiled from the game and no prebuilt APK are included. To build, you need your own legally obtained copy of the game, as an ISO or an extracted folder.
 
 Reference test device: Samsung Galaxy S25 (Snapdragon 8 Elite, Adreno 830). Results on other devices have not been tested.
 
