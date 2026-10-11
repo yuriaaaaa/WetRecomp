@@ -1,5 +1,9 @@
 # WetRecomp
 
+
+> **Android fork / AI-assisted development**  
+> This fork is intended to support development and experimentation toward running WET on Android. AI tools are used as development assistants for code analysis, implementation, debugging, and build troubleshooting, with changes reviewed and tested as practical. Android support and build status depend on the current branch and should not be assumed from the upstream platform description alone.
+
 <div align="center">
   <img src="assets/icon.png" alt="WetRecomp" width="480">
 </div>
