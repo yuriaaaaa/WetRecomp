@@ -1,0 +1,24 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+app/build
+.kotlin
+
+# Builds nativos do port
+build/
+app/src/main/jniLibs/
+
+# Your game file and signing keys never belong in the repository.
+# (Codegen output goes to ../generated/default and ../assets, ignored by the root .gitignore.)
+/game/default.xex
+/keystore/
+*.keystore
+*.jks
+thirdparty-src/

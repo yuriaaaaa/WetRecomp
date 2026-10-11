@@ -1,0 +1,3 @@
+Put the default.xex from your own legally obtained copy of WET (Xbox 360) here, or set
+WET_XEX=/path/to/default.xex when running scripts/build_host_codegen.sh.
+It is git-ignored: never commit or share it.

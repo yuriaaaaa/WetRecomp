@@ -85,6 +85,19 @@ public:
 
   void OnConfigurePaths(rex::PathConfig &paths) override
   {
+#if defined(__ANDROID__)
+    // WET Android port: the launcher (GameActivity) passes --game_data_root
+    // (ISO or extracted folder), --user_data_root, --cache_root and --config
+    // (a toml it regenerates every boot with mobile-GPU-safe defaults). Keep
+    // those instead of the desktop "walk up to the repo" layout; optional
+    // overrides (hardware.toml / mapping.toml) live in <files>/settings.
+    if (const char *cfg = std::getenv("REX_CONFIG_PATH"); cfg && *cfg)
+    {
+      paths.config_path = cfg;
+    }
+    utils::LoadSettingsFiles();
+    return;
+#endif
     // --game_data_root / REX_GAME_DATA_ROOT still win: this cvar is read
     // before any config file loads, so it's already non-empty here if set.
     if (paths.game_data_root.empty())

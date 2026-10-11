@@ -12,6 +12,11 @@ namespace utils
   static std::filesystem::path RepoRoot()
   {
     namespace fs = std::filesystem;
+#if defined(__ANDROID__)
+    // WET Android port: GetExecutableFolder() is the app's private files dir
+    // (see the SDK overlay of filesystem_posix.cpp); settings/ lives there.
+    return rex::filesystem::GetExecutableFolder();
+#endif
     fs::path dir = rex::filesystem::GetExecutableFolder();
     for (int i = 0; i < 6 && !dir.empty() && dir.has_parent_path(); ++i)
     {
